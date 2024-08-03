@@ -1,0 +1,17 @@
+.calculator{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+.buttons{
+    display: flex;
+}
+.calc-main{
+    width: 150px;
+}
+.digits{
+    display: flex;
+    flex-direction: column;
+}
+
+/*CREATE ROWS FOR THE DIGITS FOR EASIER STYLING!*/
