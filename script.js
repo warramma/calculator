@@ -31,17 +31,74 @@ function operate(operator, num1, num2){
         
     }
 }
+//-----------select number buttons------
 const display = document.querySelector(".display");
-const one = document.querySelector('#1');
-const two = document.querySelector('#2');
-const three = document.querySelector('#3');
-const four = document.querySelector('#4');
-const five = document.querySelector('#5');
-const six = document.querySelector('#6');
-const seven = document.querySelector('#7');
-const eight = document.querySelector('#8');
-const nine = document.querySelector('#9');
-const zero = document.querySelector('#0');
+const displayText = display.querySelector('p');
+const one = document.querySelector('#one');
+const two = document.querySelector('#two');
+const three = document.querySelector('#three');
+const four = document.querySelector('#four');
+const five = document.querySelector('#five');
+const six = document.querySelector('#six');
+const seven = document.querySelector('#seven');
+const eight = document.querySelector('#eight');
+const nine = document.querySelector('#nine');
+const zero = document.querySelector('#zero');
 const period = document.querySelector('#period');
 const negative = document.querySelector('#negative');
 const clear = document.querySelector('#clear');
+//-------create event listeners for numbers
+//addNum function
+function addNum(num){
+    let text = document.createTextNode(`${num}`);
+    if (displayText.textContent == '0'){
+        displayText.textContent = "";
+    }
+    displayText.appendChild(text);
+}
+//number event listeners
+zero.addEventListener("click", ()=>{
+    addNum(0);
+    event.stopPropagation();
+});
+one.addEventListener("click", ()=>{
+    addNum(1);
+    event.stopPropagation();
+});
+two.addEventListener("click", ()=>{
+    addNum(2);
+    event.stopPropagation();
+});
+three.addEventListener("click", ()=>{
+    addNum(3);
+    event.stopPropagation();
+});
+four.addEventListener("click", ()=>{
+    addNum(4);
+    event.stopPropagation();
+});
+five.addEventListener("click", ()=>{
+    addNum(5);
+    event.stopPropagation();
+});
+six.addEventListener("click", ()=>{
+    addNum(6);
+    event.stopPropagation();
+});
+seven.addEventListener("click", ()=>{
+    addNum(7);
+    event.stopPropagation();
+});
+eight.addEventListener("click", ()=>{
+    addNum(8);
+    event.stopPropagation();
+});
+nine.addEventListener("click", ()=>{
+    addNum(9);
+    event.stopPropagation();
+});
+//clear button
+clear.addEventListener("click", ()=>{
+    displayText.textContent = "0";
+    event.stopPropagation();
+});
