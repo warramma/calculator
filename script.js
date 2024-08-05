@@ -55,6 +55,7 @@ function addNum(num){
         displayText.textContent = "";
     }
     displayText.appendChild(text);
+    console.log(displayText);
 }
 //number event listeners
 zero.addEventListener("click", ()=>{
@@ -100,5 +101,51 @@ nine.addEventListener("click", ()=>{
 //clear button
 clear.addEventListener("click", ()=>{
     displayText.textContent = "0";
+    num1 = null;
+    num2 = null;
+    operator = '';
     event.stopPropagation();
 });
+//-----------------making it work--------
+//idea: for operations, add event listener so that when any operation is clicked, the text gets stored in number (needs to be parsed though)
+//check if num1 is empty, if not, add to num2
+//update boolen operation?, if operation? is true, perform current operation, then reset to false
+num1 = null;
+num2 = null;
+operator = '';
+
+//use this to check if previous operator is already in use and if both nums have been filled.
+
+function evaluateOperator(num){
+    if(operator != ''){
+        if(num1 != null && num2 != null){
+            let result = operate(operator, num1, num2);
+            const text = document.createTextNode(`${result}`);
+            displayText.appendChild(text);
+            num1 = result;
+            num2 = null;
+    
+        }
+        else if(num1!=null && num2 == null){
+            num2 = num;
+        }
+        else if(num1 == null){
+            num1 = num;
+        }
+        else{
+            console.log('error');
+        }
+    }
+    
+}
+
+//------add operator event listeners
+const divide = document.querySelector('#divide');
+const multiply = document.querySelector('#multiply');
+const add = document.querySelector('#add');
+//const 
+
+///need to think this through more, maybe set up each operation first, then think about edge cases. 
+//each operation should work like this:
+//type in a number, when press operator, store that number in num1, repeat for num2
+//if num2 is not null and another opeator is pressed (enter or not), display result of previous operation.
