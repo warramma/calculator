@@ -56,7 +56,6 @@ function addNum(num){
     }
     let text = displayText.textContent;
     displayText.textContent = `${text}${num}`;
-    console.log(displayText);
 }
 //number event listeners
 zero.addEventListener("click", ()=>{
@@ -119,15 +118,4 @@ const multiplyOp = document.querySelector('#multiply');
 const addOp = document.querySelector('#add');
 const subtractOp = document.querySelector('#subtract');
 
-///need to think this through more, maybe set up each operation first, then think about edge cases. 
-//each operation should work like this:
-//type in a number, when press operator, store that number in num1, repeat for num2
-//if num2 is not null and another opeator is pressed (enter or not), display result of previous operation.
 
-
-//extract displayText.textcontent and save to either num1 or num2
-    //assign op to operator if operator is empty
-    //if both nums are not null then call operate(operator) and reset num1, num2, and operator
-    //if num2 is empty do nothing
-    
-//enter key
