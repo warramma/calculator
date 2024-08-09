@@ -50,11 +50,12 @@ const clear = document.querySelector('#clear');
 //-------create event listeners for numbers
 //addNum function
 function addNum(num){
-    let text = document.createTextNode(`${num}`);
+    
     if (displayText.textContent == '0'){
         displayText.textContent = "";
     }
-    displayText.appendChild(text);
+    let text = displayText.textContent;
+    displayText.textContent = `${text}${num}`;
     console.log(displayText);
 }
 //number event listeners
@@ -107,45 +108,26 @@ clear.addEventListener("click", ()=>{
     event.stopPropagation();
 });
 //-----------------making it work--------
-//idea: for operations, add event listener so that when any operation is clicked, the text gets stored in number (needs to be parsed though)
-//check if num1 is empty, if not, add to num2
-//update boolen operation?, if operation? is true, perform current operation, then reset to false
 num1 = null;
 num2 = null;
 operator = '';
 
-//use this to check if previous operator is already in use and if both nums have been filled.
-
-function evaluateOperator(num){
-    if(operator != ''){
-        if(num1 != null && num2 != null){
-            let result = operate(operator, num1, num2);
-            const text = document.createTextNode(`${result}`);
-            displayText.appendChild(text);
-            num1 = result;
-            num2 = null;
-    
-        }
-        else if(num1!=null && num2 == null){
-            num2 = num;
-        }
-        else if(num1 == null){
-            num1 = num;
-        }
-        else{
-            console.log('error');
-        }
-    }
-    
-}
 
 //------add operator event listeners
-const divide = document.querySelector('#divide');
-const multiply = document.querySelector('#multiply');
-const add = document.querySelector('#add');
-//const 
+const divisionOp = document.querySelector('#divide');
+const multiplyOp = document.querySelector('#multiply');
+const addOp = document.querySelector('#add');
+const subtractOp = document.querySelector('#subtract');
 
 ///need to think this through more, maybe set up each operation first, then think about edge cases. 
 //each operation should work like this:
 //type in a number, when press operator, store that number in num1, repeat for num2
 //if num2 is not null and another opeator is pressed (enter or not), display result of previous operation.
+
+
+//extract displayText.textcontent and save to either num1 or num2
+    //assign op to operator if operator is empty
+    //if both nums are not null then call operate(operator) and reset num1, num2, and operator
+    //if num2 is empty do nothing
+    
+//enter key
