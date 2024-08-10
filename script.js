@@ -13,7 +13,6 @@ function divide(num1, num2){
     return num1 / num2;
 }
 
-let num1, num2, operator;
 
 function operate(operator, num1, num2){
     switch(operator.toLowerCase()){
@@ -47,12 +46,22 @@ const zero = document.querySelector('#zero');
 const period = document.querySelector('#period');
 const negative = document.querySelector('#negative');
 const clear = document.querySelector('#clear');
+
+//-----------------making it work--------
+let num1 = null;
+let num2 = null;
+let operator = '';
+
 //-------create event listeners for numbers
 //addNum function
 function addNum(num){
     
     if (displayText.textContent == '0'){
         displayText.textContent = "";
+    }
+    if(replaceNum1 == true){
+        displayText.textContent = "";
+        replaceNum1 = false;
     }
     let text = displayText.textContent;
     displayText.textContent = `${text}${num}`;
@@ -104,18 +113,78 @@ clear.addEventListener("click", ()=>{
     num1 = null;
     num2 = null;
     operator = '';
+    console.log(`cleared 1: ${num1}, cleared 2: ${num2}`);
     event.stopPropagation();
 });
-//-----------------making it work--------
-num1 = null;
-num2 = null;
-operator = '';
 
-
-//------add operator event listeners
+//------select operation and event elements
 const divisionOp = document.querySelector('#divide');
 const multiplyOp = document.querySelector('#multiply');
 const addOp = document.querySelector('#add');
 const subtractOp = document.querySelector('#subtract');
+const enterBtn = document.querySelector('#enter');
 
+//---updateOP function
+let replaceNum1 = false;
 
+function updateOp(operation){
+    if (operator ==''){
+        operator = operation
+        replaceNum1 = true;
+    }
+    if(num1 == null){
+        const num1input = parseFloat(displayText.textContent)
+        num1 = num1input;
+        replaceNum1 = true;
+    }
+    else if(num1!=null && num2==null){
+        const num2input = parseFloat(displayText.textContent);
+        num2 = num2input;
+        const result = operate(operator, num1, num2);
+        displayText.textContent = `${result}`;
+        num1 = result;
+        num2 = null;
+        operator = operation;
+        replaceNum1 = true;
+    }
+    
+   
+}
+
+//enter function
+function enter(){
+    if(operator!=''){
+        let num2input = parseFloat(displayText.textContent);
+        num2 = num2input;
+    }
+    const result = operate(operator, num1, num2);
+    displayText.textContent = `${result}`;
+    num1 = result;
+    num2 = null;
+    operator = '';
+}
+
+//----operator and enter event listeners
+divisionOp.addEventListener("click", ()=>{
+    updateOp('/');
+    event.stopPropagation();
+})
+
+multiplyOp.addEventListener("click", ()=>{
+    updateOp('*');
+    event.stopPropagation();
+})
+
+addOp.addEventListener("click", ()=>{
+    updateOp('+');
+    event.stopPropagation();
+})
+subtractOp.addEventListener("click", ()=>{
+    updateOp('-');
+    event.stopPropagation();
+})
+
+enterBtn.addEventListener("click", ()=>{
+    enter();
+    event.stopPropagation();
+})
