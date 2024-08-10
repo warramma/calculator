@@ -143,7 +143,10 @@ function updateOp(operation){
     else if(num1!=null && num2==null){
         const num2input = parseFloat(displayText.textContent);
         num2 = num2input;
-        const result = operate(operator, num1, num2);
+        
+        let result = operate(operator, num1, num2);
+        result = Math.round(result * 1000) / 1000;
+        
         displayText.textContent = `${result}`;
         num1 = result;
         num2 = null;
@@ -160,7 +163,8 @@ function enter(){
         let num2input = parseFloat(displayText.textContent);
         num2 = num2input;
     }
-    const result = operate(operator, num1, num2);
+    let result = operate(operator, num1, num2);
+    result = Math.round(result * 1000) / 1000;
     displayText.textContent = `${result}`;
     num1 = result;
     num2 = null;
