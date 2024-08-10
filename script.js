@@ -1,3 +1,5 @@
+//operation functions
+
 function add(num1, num2){
     return num1 + num2;
 }
@@ -13,7 +15,7 @@ function divide(num1, num2){
     return num1 / num2;
 }
 
-
+//operate: determines operator and applies operation
 function operate(operator, num1, num2){
     switch(operator.toLowerCase()){
         case '+':
@@ -53,7 +55,7 @@ let num2 = null;
 let operator = '';
 
 //-------create event listeners for numbers
-//addNum function
+//addNum function: adds numbers to display
 function addNum(num){
     
     if (displayText.textContent == '0'){
@@ -107,7 +109,7 @@ nine.addEventListener("click", ()=>{
     addNum(9);
     event.stopPropagation();
 });
-//clear button
+//clear button - clears display and resets variables
 clear.addEventListener("click", ()=>{
     displayText.textContent = "0";
     num1 = null;
@@ -124,8 +126,9 @@ const addOp = document.querySelector('#add');
 const subtractOp = document.querySelector('#subtract');
 const enterBtn = document.querySelector('#enter');
 
-//---updateOP function
-let replaceNum1 = false;
+//---updateOP function: assigns operation to operator unless operation already exists, in that case, performs existing operation
+//also assigns num1 and num2
+let replaceNum1 = false; //whether or not to update display 
 
 function updateOp(operation){
     if (operator ==''){
@@ -151,7 +154,7 @@ function updateOp(operation){
    
 }
 
-//enter function
+//enter function: assigns num2, performs chosen operation, displays result
 function enter(){
     if(operator!=''){
         let num2input = parseFloat(displayText.textContent);
