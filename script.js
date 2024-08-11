@@ -57,16 +57,29 @@ let operator = '';
 //-------create event listeners for numbers
 //addNum function: adds numbers to display
 function addNum(num){
-    
-    if (displayText.textContent == '0'){
-        displayText.textContent = "";
+    if(decimal == false && num==="."){
+        const text = displayText.textContent;
+        displayText.textContent = `${text}${num}`;
     }
-    if(replaceNum1 == true){
+    else if(decimal == true && num==='.'){
+        displayText.textContent = "";
+        displayText.textContent = "Error, doesn't support multiple decimals";
+    }
+    else if (displayText.textContent == '0'){
+        displayText.textContent = "";
+        let text = displayText.textContent;
+        displayText.textContent = `${text}${num}`;
+    }
+    else if(replaceNum1 == true){
         displayText.textContent = "";
         replaceNum1 = false;
+        let text = displayText.textContent;
+        displayText.textContent = `${text}${num}`;
     }
+    else{
     let text = displayText.textContent;
     displayText.textContent = `${text}${num}`;
+    }
 }
 //number event listeners
 zero.addEventListener("click", ()=>{
@@ -115,6 +128,7 @@ clear.addEventListener("click", ()=>{
     num1 = null;
     num2 = null;
     operator = '';
+    decimal = false;
     console.log(`cleared 1: ${num1}, cleared 2: ${num2}`);
     event.stopPropagation();
 });
@@ -152,6 +166,7 @@ function updateOp(operation){
         num1 = result;
         num2 = null;
         operator = operation;
+        decimal = false;
         replaceNum1 = true;
     }
     
@@ -172,6 +187,7 @@ function enter(){
     num1 = result;
     num2 = null;
     operator = '';
+    decimal = false;
 }
 
 //----operator and enter event listeners
@@ -198,3 +214,20 @@ enterBtn.addEventListener("click", ()=>{
     enter();
     event.stopPropagation();
 })
+
+
+//-----------EXTENSIONS---------------
+
+//decimals
+let decimal = false;
+
+period.addEventListener("click", ()=>{
+    addNum(".");
+    decimal = true;
+    console.log("decimal", decimal);
+    
+    event.stopPropagation();
+});
+
+
+console.log(parseFloat("5.3") + 5);
