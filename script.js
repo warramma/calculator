@@ -11,7 +11,7 @@ function multiply(num1, num2){
 }
 function divide(num1, num2){
     if(num1 > 0 && num2 == 0)
-        return 'undefined';
+        return 'Yeah no 😏 we don\'t divide by 0 round here';
     return num1 / num2;
 }
 
@@ -145,8 +145,9 @@ function updateOp(operation){
         num2 = num2input;
         
         let result = operate(operator, num1, num2);
-        result = Math.round(result * 1000) / 1000;
-        
+        if(typeof result == "number")
+            result = Math.round(result * 1000) / 1000;
+
         displayText.textContent = `${result}`;
         num1 = result;
         num2 = null;
@@ -164,7 +165,9 @@ function enter(){
         num2 = num2input;
     }
     let result = operate(operator, num1, num2);
-    result = Math.round(result * 1000) / 1000;
+    
+    if(typeof result == "number")
+        result = Math.round(result * 1000) / 1000;
     displayText.textContent = `${result}`;
     num1 = result;
     num2 = null;
