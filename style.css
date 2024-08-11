@@ -1,11 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=M+PLUS+Rounded+1c&family=Rowdies:wght@300;400;700&display=swap');
+
 body{
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
+    margin-top: 50px;
+    font-size: 24px;
+    text-align: right;
 }
 button{
     cursor: pointer;
+    margin: 5px;
+    font-weight: bold;
+    font-size: 28px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid rgb(0, 221, 255);
+    font-family: "IBM Plex Sans", sans-serif;
 }
 .calculator{
     display: flex;
@@ -13,16 +25,29 @@ button{
     width: 60%;
     height: 80%;
     margin: 0 auto;
-    border: 1px solid black;    
+    padding: 10px;
+    border: 10px solid black;
+    background-color: black;
+    border-radius: 10px;
 }
 .buttons{
     display: flex;
     flex-grow: 1;
 }
 .calc-main{
+    display: flex;
+    flex-direction: column;
     font-size:18px;
     width: 100%;
     height: 100%;
+    flex-grow: 1;
+}
+.controls{
+    display: flex;
+    flex-grow: 0.2;
+    flex-direction: column;
+}
+.controls button{
     flex-grow: 1;
 }
 .digits{
@@ -31,17 +56,14 @@ button{
     flex-grow: 1;
 }
 .row{
+    display: flex;
     width: 100%;
+    
     flex-grow: 1;
-    border: 1px solid black;
 }
 .row button{
     flex-grow: 1;
-}
-.row .big{
-    font-weight: bold;
-    
-
+    width: 33%;
 }
 .operations{
     display: flex;
@@ -50,5 +72,15 @@ button{
 }
 .operations button{
     flex-grow:1;
+    height: 20%;
+    background-color: gray;
+    color: white;
 }
 
+.display{
+    margin-right: 15px;
+    font-size: 36px;
+    color: white;
+    
+    font-family: "IBM Plex Sans", sans-serif;
+}
