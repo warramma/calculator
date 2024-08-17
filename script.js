@@ -82,6 +82,10 @@ function addNum(num){
     }
 }
 //number event listeners
+negative.addEventListener("click",()=>{
+    addNum('-');
+    event.stopPropagation();
+});
 zero.addEventListener("click", ()=>{
     addNum(0);
     event.stopPropagation();
@@ -178,6 +182,7 @@ function enter(){
     if(operator!=''){
         let num2input = parseFloat(displayText.textContent);
         num2 = num2input;
+        console.log(num2);
     }
     let result = operate(operator, num1, num2);
     
@@ -188,6 +193,7 @@ function enter(){
     num2 = null;
     operator = '';
     decimal = false;
+    replaceNum1 = true;
 }
 
 //----operator and enter event listeners
